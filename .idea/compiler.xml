@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FirstP.FirstPresentation.main" target="11" />
+      <module name="FirstP.FirstPresentation.test" target="11" />
+      <module name="FirstPrese.FirstPresentation.main" target="11" />
+      <module name="FirstPrese.FirstPresentation.test" target="11" />
+      <module name="meuprojeto.FirstPresentation.main" target="11" />
+      <module name="meuprojeto.FirstPresentation.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

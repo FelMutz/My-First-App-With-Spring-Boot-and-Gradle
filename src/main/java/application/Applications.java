@@ -1,43 +1,38 @@
 package application;
 
-import currency.application.Currency;
-import employeeRegistration.application.EmployeeRegistration;
-import matriz.application.Matriz;
-import orderOfService.application.OrderOfService;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import thread.TestThreadStreams;
+import thread.TestTwoThread;
+import toCompare.SimpleParallel;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
+@RestController
 public class Applications {
 
-    public static void Applications(){
 
-        Scanner scan = new Scanner(System.in);
+    @RequestMapping(value = "/Solicita/{Choose}", method = RequestMethod.GET)
+    public static List<String> aplications(@PathVariable("Choose") Integer choose){
+       switch (choose){
 
-        System.out.println("Choose the application you want");
-        System.out.println("1 - Employee Registration");
-        System.out.println("2 - Matriz");
-        System.out.println("3 - Currency");
-        System.out.println("4 - Order Of Service");
-
-        int choice = scan.nextInt();
-
-        switch (choice){
             case 1:
-                EmployeeRegistration.employeeRegistration();
-                break;
+                return SimpleParallel.simpleParallel();
+
             case 2:
-                Matriz.matriz();
-                break;
+               return TestTwoThread.testTwoThread();
             case 3:
-                Currency.currency();
-                break;
-            case 4:
-                OrderOfService.orderOfService();
-                break;
+                return TestThreadStreams.testThreadStreams();
+
             default:
-                System.out.println("Invalid choise!!");
-        }
-        scan.close();
+                List<String> list = new ArrayList<String>();
+                list.add("Invalid choise!!");
+                return list;
+       }
+
     }
 
 }
