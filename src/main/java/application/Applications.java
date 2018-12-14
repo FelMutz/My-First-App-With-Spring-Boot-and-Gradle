@@ -1,5 +1,8 @@
 package application;
 
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,21 +19,22 @@ public class Applications {
 
 
     @RequestMapping(value = "/Solicita/{Choose}", method = RequestMethod.GET)
-    public static List<String> aplications(@PathVariable("Choose") Integer choose){
+    public static ResponseEntity aplications(@PathVariable("Choose") Integer choose){
        switch (choose){
 
             case 1:
-                return SimpleParallel.simpleParallel();
+                return ResponseEntity.ok(SimpleParallel.simpleParallel());
 
             case 2:
-               return TestTwoThread.testTwoThread();
+               return ResponseEntity.ok(TestTwoThread.testTwoThread());
             case 3:
-                return TestThreadStreams.testThreadStreams();
+                return ResponseEntity.ok(TestThreadStreams.testThreadStreams());
 
             default:
                 List<String> list = new ArrayList<String>();
                 list.add("Invalid choise!!");
-                return list;
+                return  ResponseEntity.badRequest().body(list);
+                //return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(list);
        }
 
     }
