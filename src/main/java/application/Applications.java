@@ -3,6 +3,7 @@ package application;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +14,7 @@ import toCompare.SimpleParallel;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Controller
 @RestController
 public class Applications {
 
@@ -33,8 +34,8 @@ public class Applications {
             default:
                 List<String> list = new ArrayList<String>();
                 list.add("Invalid choise!!");
-                return  ResponseEntity.badRequest().body(list);
-                //return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(list);
+                //return  ResponseEntity.badRequest().body(list);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(list);
        }
 
     }

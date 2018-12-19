@@ -1,17 +1,21 @@
 package thread;
 
+import lombok.SneakyThrows;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-
+@Service
 public class TestThreadStreams {
     public static long num = 1000000L;
     private static List<String> list = new ArrayList<String>();
 
 
+    @SneakyThrows
     public synchronized static List<String> testThreadStreams(){
         list.clear();
         list.add("testThreadStreams");
@@ -29,9 +33,12 @@ public class TestThreadStreams {
         longSimple.start();
         longParallel.start();
 
-        while (toFor.isAlive() ==true|| simple.isAlive()==true|| parallel.isAlive()==true|| longSimple.isAlive()==true||longParallel.isAlive()==true){
+        toFor.join();
+        simple.join();
 
-        }
+//        while (toFor.isAlive() ==true|| simple.isAlive()==true|| parallel.isAlive()==true|| longSimple.isAlive()==true||longParallel.isAlive()==true){
+//
+//        }
         return list;
 
     }

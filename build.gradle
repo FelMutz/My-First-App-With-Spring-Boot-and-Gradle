@@ -5,12 +5,12 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.1.RELEASE")
     }
-}
+}// pacote de configuração das dependencias de terceiros que auxiliaram o gradle na compilação.
 
 repositories {
-    mavenLocal()
-    mavenCentral()
-}
+    mavenLocal()//maquina local
+    mavenCentral()//repositorio do maven
+}// pacote indicando locais onde o gradle ira procurar as dependencias.
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -21,7 +21,11 @@ sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
-    testCompile "org.springframework.boot:spring-boot-starter-test"
+    compile "org.springframework.boot:spring-boot-starter-web" //Quando a compilação ocorre,
+                                                               //esta dependência será incluída no caminho de classe do javac
+                                                               //para compilar seu arquivo de origem java.
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4' //Dependência é usada apenas na compilação, e não é adicionada ao javac
+    testCompile "org.springframework.boot:spring-boot-starter-test"//Dependências necessarias apenas para os testes
+    
+    //compileInclude é usado para dependencias transitivas
 }

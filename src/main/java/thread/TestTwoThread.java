@@ -1,8 +1,10 @@
 package thread;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class TestTwoThread {
 
     private static int i = 0;
